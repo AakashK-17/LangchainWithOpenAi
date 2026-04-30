@@ -1,5 +1,52 @@
-.env
+# Virtual environments
 venv/
+.venv/
+env/
+.env_venv/
+genai_master_env/
+*_env/
+virtualenv/
+
+# Python cache
 __pycache__/
-*.pyc
+*.py[cod]
+*$py.class
+*.pyo
+.Python
+
+# Distribution / packaging
+dist/
+build/
+*.egg-info/
+*.egg
+.eggs/
+
+# Jupyter
 .ipynb_checkpoints/
+*.ipynb_checkpoints
+
+# VS Code
+.vscode/
+
+# Environment / secrets
+*.env
+.env
+.env.*
+!.env.example
+
+# Vector store artifacts
+chroma/
+faiss/
+*.index
+*.faiss
+vectorstore/
+db/
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Logs
+*.log
+logs/

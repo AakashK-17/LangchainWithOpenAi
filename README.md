@@ -111,15 +111,41 @@ Uses `langchain_community.vectorstores.FAISS` backed by HuggingFaceEmbeddings. D
 - Python 3.9 or higher
 - Jupyter Notebook or JupyterLab
 - Ollama installed and running locally (required for Ollama notebooks)
+- VS Code (recommended) with the Python and Jupyter extensions
 
-### Installation
+### Option 1 — Shared Environment (Recommended)
+
+If you also work on the **GenAI-App-with-OpenAI** project, use the shared environment to avoid duplicate installs (~600 MB saved).
+
+```powershell
+# From "D:\Gen AI projects\" in PowerShell
+.\setup_genai_env.ps1
+```
+
+The script will:
+1. Create `D:\Gen AI projects\genai_master_env\`
+2. Install all required packages (including those for both projects)
+3. Register a Jupyter kernel named **"Python (GenAI Master)"**
+4. Offer to remove old `venv/` and `.venv/` folders
+
+After the script completes, open VS Code in this folder — the interpreter is already configured in `.vscode/settings.json`.
+
+### Option 2 — Standalone Environment
 
 Clone the repository and install dependencies:
 
 ```bash
 git clone https://github.com/AakashK-17/LangchainWithOpenAi.git
 cd LangchainWithOpenAi
+
+python -m venv venv
+# Windows
+venv\Scripts\activate
+# macOS / Linux
+source venv/bin/activate
+
 pip install -r requirements.txt
+python -m ipykernel install --user --name langchain_openai --display-name "Python (LangChain)"
 ```
 
 ### Environment Variables
@@ -130,7 +156,20 @@ Create a `.env` file in the project root for API keys:
 OPENAI_API_KEY=your_openai_api_key
 ```
 
-Only the `Embeddings/embeddings.ipynb` notebook requires an OpenAI API key. All other notebooks use local models (HuggingFace or Ollama) and work without any API key.
+Only `Embeddings/embeddings.ipynb` requires an OpenAI API key. All other notebooks use local models (HuggingFace or Ollama).
+
+### Running the Notebooks
+
+**VS Code (recommended):**
+1. Open this folder in VS Code
+2. Open any `.ipynb` file
+3. Select kernel **"Python (GenAI Master)"** (or your standalone kernel)
+4. Run cells with `Shift+Enter`
+
+**JupyterLab:**
+```bash
+jupyter lab
+```
 
 ### Ollama Setup
 
